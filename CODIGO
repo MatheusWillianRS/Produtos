@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void adicionarProd();
+void removerProd();
+
+struct Prod {
+    char nome[50];
+    int quant;
+    float preco;
+};
+
+void adicionarProd(struct Prod armazem[], int *totalProd) {
+    if (*totalProd >= 15) {
+        printf("menos um produto armazenado.\n");
+        return ;
+    }
+system("cls");
+    printf("Nome do produto:\n ");
+    scanf("%s", &armazem[*totalProd].nome);
+
+    printf("a quantidade de produtos: \n");
+    scanf("%d", &armazem[*totalProd].quant);
+
+    printf("Digite o preco: \n");
+    scanf("%f", &armazem[*totalProd].preco);
+
+    (*totalProd)++;
+    system("cls");
+
+
+}
+
+void removerProd(struct Prod armazem[], int *totalProd) {
+    system("cls");
+    if (*totalProd ) {
+        printf("menos um produto armazenado.\n");
+    (*totalProd)--;
+        return;
+   }
+}
+
+
+int main() {
+    struct Prod armazem[15];
+    int total = 0;
+    int opt;
+    system("cls");
+    while (1) {
+  printf("\n\t---------------------------------------------");
+        printf("\n\t º                                          º");
+        printf("\n\t º        MENU DE PRODUTOS                  º");
+        printf("\n\t º                                          º");
+        printf("\n\t---------------------------------------------");
+        printf("\n\t º                                          º");
+        printf("\n\t º    [1] - ADICIONAR PRODUTO               º");
+        printf("\n\t º    [2] - REMOVER PRODUTO                 º");
+        printf("\n\t º    [3] - FINALIZAR                       º");
+        printf("\n\t º                                          º");
+        printf("\n\t---------------------------------------------");
+        printf("\n\tDigite o numero de uma das opcoes:");
+
+        scanf("%d", &opt);
+
+    switch (opt) {
+
+     case 1:
+        adicionarProd(armazem, &total);
+        break;
+
+     case 2:
+        removerProd(armazem, &total);
+        break;
+     case 3:
+        printf("FINALIZANDO\n");
+        exit(0);
+
+    default:
+        printf("OPCAO INVALIDA!.\n");
+     system("cls");
+     }
+   }
+  return 0;
+}
+
